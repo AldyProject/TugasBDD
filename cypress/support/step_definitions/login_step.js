@@ -1,14 +1,15 @@
+import LoginPage from "../../e2e/login.page.js";
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
 Given("I open login page", () => {
-  cy.visit("http://zero.webappsecurity.com/login.html"); // Sesuaikan dengan URL halaman login Anda
+  LoginPage.visit(); // Sesuaikan dengan URL halaman login Anda
 });
 
 When("I submit login", () => {
   // Sesuaikan ID sesuai elemen yang ada di situs web
-  cy.get("#user_login").type("username");
-  cy.get("#user_password").type("password");
-  cy.get(".btn").click();
+  LoginPage.fillUsername('username');
+  LoginPage.fillPassword('password');
+  LoginPage.signIn();
 });
 
 Then("I should see homepage", () => {
